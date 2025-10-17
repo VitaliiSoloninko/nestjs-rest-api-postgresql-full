@@ -1,17 +1,13 @@
 services:
-  main:
-    container_name: mail
+  app:
+    container_name: nestjs-app
     build:
       context: .
     env_file:
       - .development.env
-    volumes:
-      - .:/app
-      - /app/node_modules
     ports:
-      - 5000:5000
-      - 9229:9229
-    command: npm run start:dev
+      - '5000:5000'
+    command: node dist/main.js
     depends_on:
       - postgres
     restart: always
@@ -22,11 +18,11 @@ services:
     env_file:
       - .development.env
     environment:
-      - PG/DATA:/var/lib/postgressql/data
+      - PGDATA=/var/lib/postgresql/data
     ports:
-      - 5500:5500
+      - '5500:5432'
     volumes:
-      - pgdata:/var/lib/postgressql/data
+      - pgdata:/var/lib/postgresql/data
     restart: always
 
 volumes:
