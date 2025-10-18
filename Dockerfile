@@ -13,6 +13,6 @@ WORKDIR /app
 COPY package*.json ./
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/.env ./
+COPY --from=build /app/.development.env ./
 CMD ["node", "dist/main.js"]
 

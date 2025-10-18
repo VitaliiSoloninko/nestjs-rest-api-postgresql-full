@@ -1,20 +1,21 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { SequelizeModule } from '@nestjs/sequelize'
-import { UsersModule } from './users/users.module'
-import { User } from './users/users.model'
-import { RolesModule } from './roles/roles.module'
-import { Role } from './roles/roles.model'
-import { UserRoles } from './roles/user-roles.model'
-import { AuthModule } from './auth/auth.module'
-import { PostsModule } from './posts/posts.module'
-import { Post } from './posts/posts.model'
-import { FilesModule } from './files/files.module'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import * as path from 'path'
+import { AppController } from './app.controller'
+import { AuthModule } from './auth/auth.module'
+import { FilesModule } from './files/files.module'
+import { Post } from './posts/posts.model'
+import { PostsModule } from './posts/posts.module'
+import { Role } from './roles/roles.model'
+import { RolesModule } from './roles/roles.module'
+import { UserRoles } from './roles/user-roles.model'
+import { User } from './users/users.model'
+import { UsersModule } from './users/users.module'
 
 @Module({
-	controllers: [],
+	controllers: [AppController],
 	providers: [],
 	imports: [
 		ConfigModule.forRoot({

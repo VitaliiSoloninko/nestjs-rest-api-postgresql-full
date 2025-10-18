@@ -4,9 +4,9 @@ services:
     build:
       context: .
     env_file:
-      - .development.env
+      - .production.env
     ports:
-      - '5000:5000'
+      - '7000:7000'
     command: node dist/main.js
     depends_on:
       - postgres
@@ -16,11 +16,11 @@ services:
     container_name: postgres
     image: postgres:12
     env_file:
-      - .development.env
+      - .production.env
     environment:
       - PGDATA=/var/lib/postgresql/data
     ports:
-      - '5500:5432'
+      - '5555:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: always
